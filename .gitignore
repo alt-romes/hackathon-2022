@@ -1,3 +1,7 @@
+#Manually added
+build/
+
+
 # Logs
 logs
 *.log
