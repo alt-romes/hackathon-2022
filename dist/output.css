@@ -499,6 +499,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 16.666667%;
 }
 
+.w-full {
+  width: 100%;
+}
+
 .items-center {
   align-items: center;
 }
@@ -511,8 +515,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-width: 1px;
 }
 
+.border-y {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+
 .border-b {
   border-bottom-width: 1px;
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .bg-gray-50 {
@@ -594,6 +608,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:bg-teal:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(0 128 128 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-black:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 @media (prefers-color-scheme: dark) {

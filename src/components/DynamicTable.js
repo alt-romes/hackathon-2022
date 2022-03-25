@@ -16,7 +16,7 @@ function DynamicTable() {
 
     //w-full
     return (
-        <table className="mx-auto text-sm text-left text-white">
+        <table className="w-full mx-auto text-sm text-left text-white">
             <thead className="text-xs text-white uppercase bg-white">
                 <TableRow rowValues={table[0]}/>
             </thead>
