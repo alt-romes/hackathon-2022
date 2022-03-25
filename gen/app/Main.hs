@@ -5,7 +5,7 @@ import Parser
 
 main :: IO ()
 main = do
-    x <- parseFromFile "test.app"
-    print x
+    Right x <- parseFromFile "test.app"
+    putStrLn (concatMap pprPage $ x)
     return ()
 
