@@ -10,14 +10,14 @@ B:
 ===============================
 > Data
 > Protocolo
-> Como correu?
+> ComoCorreu
 ^ Foto
->> Conclusão
+>> Conclusao
 ===============================
-[[Submit]] => A
+[[ Submit ]] => A
 
 C:
 
-Data | Protocolo | ComoCorreu | Foto | Conclusão
+Data | Protocolo | ComoCorreu | Foto | Conclusao
 --------------------------------------------------
 ...
