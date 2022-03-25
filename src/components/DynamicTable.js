@@ -14,9 +14,10 @@ function DynamicTable() {
         <TableRow key={i+row[0]} rowValues={row}/>
     ))
 
+    //w-full
     return (
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="mx-auto text-sm text-left text-white">
+            <thead className="text-xs text-white uppercase bg-white">
                 <TableRow rowValues={table[0]}/>
             </thead>
             <tbody>
