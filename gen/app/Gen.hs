@@ -25,7 +25,7 @@ instance Show Component where
     show (Component name props) = "<" <> name <> concatMap (\(x, y) -> " " <> x <> "=" <> y <> "") props <> " />"
 
 page2Comp :: Page -> Component
-page2Comp (Page (PageName n) ls) = Component "Route" [("path", "/" <> n), ("element", "{<>" <> concatMap (show . line2Comp) ls <> "</>}")] -- TODO: move output of line2Comp to individual component
+page2Comp (Page (PageName n) ls) = Component "Route" [("path", "'/" <> n <> "'"), ("element", "{<>" <> concatMap (show . line2Comp) ls <> "</>}")] -- TODO: move output of line2Comp to individual component
 
 line2Comp :: Line -> Component
 line2Comp (Table fs l) = Component "Table" [("fields", show $ map (\(FieldName n) -> n) fs)]
