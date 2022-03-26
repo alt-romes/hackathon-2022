@@ -15,7 +15,7 @@ function App() {
       <PageWrapper props={
           <Routes>
             <Route path="/A" element={<> <TablePage fieldNames={["Name","Age","Nationality"]} /> <RedirectButton page="B"/> </>} />
-            <Route path="/B" element={<> <CustomForm fieldNames={["Name","Age","Nationality"]}/> </>}/>
+            <Route path="/B" element={<> <CustomForm fieldNames={[['Name',' N'],['Age','N'],['Nationality','L']]}/> </>}/>
           </Routes>
       } />
 
