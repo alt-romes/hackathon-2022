@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function CustomForm({ fieldNames }) {
+export default function CustomForm({ formFields }) {
     const [inputObj, setInputObj] = useState({})
 
     const fieldNamez = [['Name', 'N'], ['Age', 'U'], ['Nationality', 'L']]

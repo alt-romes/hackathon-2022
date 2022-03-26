@@ -15,8 +15,8 @@ function App() {
     <div className="App">
       <PageWrapper props={
           <Routes>
-            <Route path="/A" element={<> <DynamicTable fieldNames={["Name","Age","Nationality"]} /> <SimpleButton page="B"/> </>} />
-            <Route path="/B" element={<> <CustomForm fieldNames={[['Name',' N'],['Age','N'],['Nationality','L']]}/> </>}/>
+            <Route path="/A" element={<> <DynamicTable tableFields={["Name","Age","Nationality"]} /> <SimpleButton page="B"/> </>} />
+            <Route path="/B" element={<> <CustomForm formFields={[['Name',' N'],['Age','N'],['Nationality','L']]}/> </>}/>
           </Routes>
       } />
 
