@@ -1,9 +1,11 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { createRow } from "../axios"
 
-export default function CustomForm({ formFields }) {
+function CustomForm({ formFields, SubmitRoute, SubmitText }) {
     const [inputObj, setInputObj] = useState({})
-    //for testing
-    //const fieldNamez = [['Name', 'N'], ['Age', 'U'], ['Nationality', 'L']]
+    let navigate = useNavigate();
+
     const handleChange = (event, index) => {
         let obj = { ...inputObj }
         obj[formFields[index][0]] = event.target.value
@@ -12,6 +14,19 @@ export default function CustomForm({ formFields }) {
 
     const handleSubmit = (event) => {
         console.log(inputObj)
+        if (inputObj) {
+            createRow(inputObj).then(
+                res => {
+                    navigate('/' + SubmitRoute)
+                }
+            ).catch(
+                err => {
+                    if (err.response) {
+                        console.log(err.response)
+                    }
+                }
+            )
+        }
     }
 
     const renderInputs = formFields.map((fieldN, i) => (
@@ -49,7 +64,6 @@ export default function CustomForm({ formFields }) {
     ))
 
     return (
-
         <div className="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
             <form>
                 {renderInputs}
@@ -58,3 +72,5 @@ export default function CustomForm({ formFields }) {
         </div>
     )
 }
+
+export default CustomForm;
