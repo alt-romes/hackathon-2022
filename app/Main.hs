@@ -9,9 +9,8 @@ main = do
     x <- parseFromFile "test.app"
     case x of
       Left err -> print err
-      Right ast -> writeFile "_build/src/App.js" (render (App ast))
-    -- putStrLn (concatMap pprPage $ x)
-    -- print (collectFieldNames x)
-    -- writeFile "_build/src/App.js" (render (App x))
+      Right ast -> do
+          putStrLn (unwords $ map (\(FieldName n) -> n) $ collectFieldNames ast)
+          writeFile "_build/src/App.js" (render (App ast))
     return ()
 

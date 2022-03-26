@@ -1,3 +1,4 @@
+
 A:
 
 Data | Protocolo | Outcome
@@ -22,4 +23,5 @@ C:
 Data | Protocolo | Outcome | Foto | Conclusao
 =============================================
 ---------------------------------------------
+
 
