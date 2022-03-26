@@ -11,7 +11,7 @@ export default function Breadcrumbs() {
     }, [])
 
     return (
-        <nav className="flex" aria-label="Breadcrumb">
+        <nav className="flex mb-6" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 {breadcrumbs.map(({ breadcrumb }, i) => (
                     <li class="inline-flex items-center">

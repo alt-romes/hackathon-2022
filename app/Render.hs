@@ -18,19 +18,23 @@ import {
   Route,
   useNavigate
 } from "react-router-dom";
-import DynamicTable from "./components/DynamicTable";
 import PageWrapper from "./pages/PageWrapper";
+import DynamicTable from "./components/DynamicTable";
 import SimpleButton from "./components/SimpleButton";
 import CustomForm from "./components/CustomForm";
+import Breadcrumbs from "./components/Breadcrumbs";
 import SpaceSplit from "./components/SpaceSplit";
 function App() {
   let navigate = useNavigate();
   return (
     <div className="App">
       <PageWrapper props={
+        <>
+          <Breadcrumbs />
           <Routes>
     |] <> unlines (map (show . page2Comp) pages) <> [r|
           </Routes>
+        </>
       } />
 
     </div>
