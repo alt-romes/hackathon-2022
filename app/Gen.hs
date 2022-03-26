@@ -74,12 +74,12 @@ solvePending = map (fixerComp . mergePending) . groupBy groupPending
         mergeWith f (x:xs) (y:ys) = f x y:mergeWith f xs ys
 
 line2Comp :: Line -> Component
-line2Comp (Table fs l) = Component "Table" [("fields", show $ map (\(FieldName n) -> n) fs, True)]
+line2Comp (Table fs l) = Component "DynamicTable" [("fields", show $ map (\(FieldName n) -> n) fs, True)]
 line2Comp DummyRow = error "impossible"
 line2Comp SpaceSplit = Component "SpaceSplit" []
-line2Comp (Button str) = Component "Button" [("btntext", str, False)]
+line2Comp (Button str) = Component "SimpleButton" [("text", str, False)]
 line2Comp (FormInput (FieldName n)) = PendingComponent "CustomForm" [("fieldNames", "[" <> show n <> "," <> "'N'" <> "]", True)]
-line2Comp (FormLongInput (FieldName n)) = PendingComponent "CustomForm" [("fieldNames", "[" <> show n <> "," <> "L" <> "]", True)]
+line2Comp (FormLongInput (FieldName n)) = PendingComponent "CustomForm" [("fieldNames", "[" <> show n <> "," <> "'L'" <> "]", True)]
 line2Comp (FormUpload (FieldName n)) = PendingComponent "CustomForm" [("fieldNames", "[" <> show n <> "," <> "'U'" <> "]", True)]
 line2Comp (FormSubmit str) = PendingComponent "CustomForm" [("submitText", str, False)]
 line2Comp (GoesTo l (PageName p)) = case line2Comp l of

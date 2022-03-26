@@ -18,9 +18,9 @@ import {
   Route,
   useNavigate
 } from "react-router-dom";
-import TablePage from "./pages/TablePage";
+import DynamicTable from "./components/DynamicTable";
 import PageWrapper from "./pages/PageWrapper";
-import RedirectButton from "./components/RedirectButton";
+import SimpleButton from "./components/SimpleButton";
 import CustomForm from "./components/CustomForm";
 function App() {
   let navigate = useNavigate();
