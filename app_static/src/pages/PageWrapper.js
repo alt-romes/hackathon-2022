@@ -1,8 +1,7 @@
 export default function PageWrapper({ props }) {
 
-
     return (
-        <div>
+        <div >
             {props}
         </div>
     )
