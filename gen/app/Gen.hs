@@ -19,25 +19,26 @@ data Line = Table [FieldName] Line -- dummy row might have GoesTo
           | GoesTo Line PageName
           deriving stock (Show)
 
-data Component = Component String [(String, String)]
+data Component = Component String [(String, String, Bool)]
 
 instance Show Component where
-    show (Component name props) = "<" <> name <> concatMap (\(x, y) -> " " <> x <> "=" <> y <> "") props <> " />"
+    show (Component name props) = "<" <> name <> concatMap (\(x, y, b) -> " " <> x <> "=" <> (if b then "{" else "'") <> y <> if b then "}" else "'") props <> " />"
 
 page2Comp :: Page -> Component
-page2Comp (Page (PageName n) ls) = Component "Route" [("path", "'/" <> n <> "'"), ("element", "{<>" <> concatMap (show . line2Comp) ls <> "</>}")] -- TODO: move output of line2Comp to individual component
+page2Comp (Page (PageName n) ls) = Component "Route" [("path", "/" <> n, False),
+                                     ("element", "<>" <> concatMap (show . line2Comp) ls <> "</>", True)] -- TODO: move output of line2Comp to individual component
 
 line2Comp :: Line -> Component
-line2Comp (Table fs l) = Component "Table" [("fields", show $ map (\(FieldName n) -> n) fs)]
+line2Comp (Table fs l) = Component "Table" [("fields", show $ map (\(FieldName n) -> n) fs, True)]
 line2Comp DummyRow = error "impossible"
 line2Comp SpaceSplit = Component "SpaceSplit" []
-line2Comp (Button str) = Component "Button" [("btntext", str)]
-line2Comp (FormInput (FieldName n)) = Component "FormInput" [("field", n)]
-line2Comp (FormLongInput (FieldName n)) = Component "FormLongInput" [("field", n)]
-line2Comp (FormUpload (FieldName n)) = Component "FormUpload" [("field", n)]
-line2Comp (FormSubmit str) = Component "FormSubmit" [("btntext", str)]
+line2Comp (Button str) = Component "Button" [("btntext", str, False)]
+line2Comp (FormInput (FieldName n)) = Component "FormInput" [("field", n, False)]
+line2Comp (FormLongInput (FieldName n)) = Component "FormLongInput" [("field", n, False)]
+line2Comp (FormUpload (FieldName n)) = Component "FormUpload" [("field", n, False)]
+line2Comp (FormSubmit str) = Component "FormSubmit" [("btntext", str, False)]
 line2Comp (GoesTo l (PageName p)) = let (Component name props) = line2Comp l in
-                                         Component name (("onClick", "{() => navigate(/" <> p <> ")}"):props)
+                                         Component name (("onClick", "() => navigate(/" <> p <> ")", True):props)
 
 
 collectFieldNames :: [Page] -> [FieldName]
