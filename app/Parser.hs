@@ -7,33 +7,6 @@ import qualified Text.Parsec.Expr as Ex
 
 import Lexer
 
-{-
-A:
-
-Data | Protocolo | Como correu?
--------------------------------
-... => C
-===============================
-[ Add ] => B
-
-B:
-$Today
-===============================
-> Data
-> Protocolo
-> Como correu?
-^ Foto
->> Conclusão
-===============================
-[[Submit]] => A
-
-C:
-
-Data | Protocolo | Como correu? | Foto | Conclusão
---------------------------------------------------
-...
--}
-
 pageName :: Parser PageName
 pageName = PageName <$> identifier
 
@@ -46,13 +19,13 @@ table = do
     ns <- many1 $ do
         reservedOp "|"
         FieldName <$> identifier
-    many1 (symbol "-")
+    many1 (symbol "=")
     l <- line
     return $ Table (n1:ns) l
 
 dummyRow :: Parser Line
 dummyRow = do
-    many1 (symbol ".")
+    try $ many1 (symbol "-")
     return DummyRow
 
 split :: Parser Line

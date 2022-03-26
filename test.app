@@ -1,23 +1,25 @@
 A:
 
-Data | Protocolo | ComoCorreu
--------------------------------
-... => C
-===============================
-[ Add ] => B
+Data | Protocolo | Outcome
+==========================
+--------------------------
+
+[ Adicionar ] => B
 
 B:
 
-===============================
 > Data
+^ BI
 > Protocolo
 > ComoCorreu
 ^ Foto
 >> Conclusao
-[[ Submit ]] => A
+[[ Gravar ]] => A
+
 
 C:
 
-Data | Protocolo | ComoCorreu | Foto | Conclusao
---------------------------------------------------
-...
+Data | Protocolo | Outcome | Foto | Conclusao
+=============================================
+---------------------------------------------
+
