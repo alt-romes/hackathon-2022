@@ -17,7 +17,11 @@ function DynamicTable({ tableFields }) {
             getTable().then(
                 res => {
                     console.log(res)
-                    setTable(res.data.data)
+                    let proccessedData = res.data.data.map(x =>
+                        Object.entries(x).sort((a, b) =>
+                            b[0].localeCompare(a[0])).filter(x => x[0] != "id")
+                            .map(y => y[1]))
+                    setTable(proccessedData)
                 }
             ).catch(
                 err => {
@@ -29,12 +33,9 @@ function DynamicTable({ tableFields }) {
         }
     }, [tableData])
 
-    const renderRows = () => (
-        tableData && tableData.map((row, i) => (
+    const renderRows = tableData.map((row, i) => (
             <TableRow key={i + row[0]} rowValues={row} />
         ))
-    )
-   
 
     const renderTh = tableFields.map((item, i) => (
         <th key={i + item} className={"px-6 py-3"}>
@@ -46,18 +47,20 @@ function DynamicTable({ tableFields }) {
 
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             {
-                tableData && (
-                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                {renderTh}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {renderRows}
-                        </tbody>
-                    </table>
-                )
+                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            {renderTh}
+                        </tr>
+                    </thead>
+                    {
+                        tableData && (
+                            <tbody>
+                                {renderRows}
+                            </tbody>
+                        )
+                    }
+                </table>
             }
         </div>
     )
