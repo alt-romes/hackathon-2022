@@ -12,17 +12,11 @@ function CustomForm({ formFields, submitRoute, submitText }) {
         setInputObj(obj)
     }
 
-    useEffect(() => {
-        console.log(inputObj)
-    }, [inputObj])
-
     const handleSubmit = (event) => {
-        console.log(inputObj)
         if (inputObj) {
             createRow(inputObj).then(
                 res => {
-                    navigate('/' + submitRoute)
-                    console.log("Success")
+                    navigate("/".concat(submitRoute))
                 }
             ).catch(
                 err => {
@@ -69,10 +63,10 @@ function CustomForm({ formFields, submitRoute, submitText }) {
     ))
 
     return (
-        <form>
+        <div>
             {renderInputs}
-            <button onClick={handleSubmit} type="submit" className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">{submitText}</button>
-        </form>
+            <button onClick={handleSubmit} className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">{submitText}</button>
+        </div>
     )
 }
 
