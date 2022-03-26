@@ -1,4 +1,5 @@
 A:
+
 Data | Protocolo | ComoCorreu
 -------------------------------
 ... => C
@@ -6,7 +7,7 @@ Data | Protocolo | ComoCorreu
 [ Add ] => B
 
 B:
-# $Today
+
 ===============================
 > Data
 > Protocolo
