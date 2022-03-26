@@ -111,6 +111,6 @@ function createTable(myArgs) {
         }
     }
     fieldNames = fieldNamesFun(myArgs);
-    return "\'CREATE TABLE " + myArgs[0] + stringify(myArgs) + "\'";
+    return "CREATE TABLE " + myArgs[0] + stringify(myArgs);
 }
 

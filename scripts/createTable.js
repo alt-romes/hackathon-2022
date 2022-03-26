@@ -36,11 +36,11 @@ function createTable(myArgs) {
         }
     }
     if (myArgs.length > 0) {
-        return "\'CREATE TABLE " + myArgs[0] + stringify(myArgs) + "\'";
+        return "CREATE TABLE " + myArgs[0] + stringify(myArgs) + "";
     }
 }
 
 
 let r = "\'CREATE TABLE " + myArgs[0] + stringify(myArgs) + "\'"
 
-//console.log(createTable(myArgs));
+console.log(createTable(myArgs));
