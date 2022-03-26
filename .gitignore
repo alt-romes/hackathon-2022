@@ -1,5 +1,7 @@
 #Manually added
+_build/
 build/
+dist-newstyle/
 
 # Logs
 logs

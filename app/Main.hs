@@ -9,6 +9,6 @@ main = do
     Right x <- parseFromFile "test.app"
     -- putStrLn (concatMap pprPage $ x)
     -- print (collectFieldNames x)
-    putStrLn (render (App x))
+    writeFile "_build/src/App.js" (render (App x))
     return ()
 
