@@ -15,12 +15,14 @@ function App() {
   return (
     <div className="App">
       <PageWrapper props={
+        <>
           <Breadcrumbs />
           <Routes>
-            <Route path='/A' element={<><DynamicTable tableFields={["Data","Protocolo","Outcome"]} /><SimpleButton handleClick={() => navigate('/B')} text='Adicionar' /></>} />
-            <Route path='/B' element={<><CustomForm formFields={[["Data",'N'], ["BI",'U'], ["Protocolo",'N'], ["ComoCorreu",'N'], ["Foto",'U'], ["Conclusao",'L']]} submitRoute='A' submitText='Gravar' /></>} />
-            <Route path='/C' element={<><DynamicTable tableFields={["Data","Protocolo","Outcome","Foto","Conclusao"]} /></>} />
+            <Route path='/A' element={<><DynamicTable tableFields={["Data", "Protocolo", "Outcome"]} /><SimpleButton handleClick={() => navigate('/B')} text='Adicionar' /></>} />
+            <Route path='/B' element={<><CustomForm formFields={[["Data", 'N'], ["BI", 'U'], ["Protocolo", 'N'], ["ComoCorreu", 'N'], ["Foto", 'U'], ["Conclusao", 'L']]} submitRoute='A' submitText='Gravar' /></>} />
+            <Route path='/C' element={<><DynamicTable tableFields={["Data", "Protocolo", "Outcome", "Foto", "Conclusao"]} /></>} />
           </Routes>
+        </>
       } />
 
     </div>
@@ -28,4 +30,4 @@ function App() {
 }
 
 export default App;
-    
+

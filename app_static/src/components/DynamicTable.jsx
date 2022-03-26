@@ -17,7 +17,7 @@ function DynamicTable({ tableFields }) {
             getTable().then(
                 res => {
                     console.log(res)
-                    let proccessedData = res.data.data.map(x =>
+                    let proccessedData = res?.data?.data?.map(x =>
                         Object.entries(x).sort((a, b) =>
                             b[0].localeCompare(a[0])).filter(x => x[0] != "id")
                             .map(y => y[1]))
@@ -33,7 +33,7 @@ function DynamicTable({ tableFields }) {
         }
     }, [tableData])
 
-    const renderRows = tableData.map((row, i) => (
+    const renderRows = tableData?.map((row, i) => (
             <TableRow key={i + row[0]} rowValues={row} />
         ))
 
