@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { createRow } from "../axios"
 
-export default function CustomForm({ formFields }) {
+export default function CustomForm({ formFields, SubmitRoute, SubmitText }) {
     const [inputObj, setInputObj] = useState({})
-    //for testing
-    //const fieldNamez = [['Name', 'N'], ['Age', 'U'], ['Nationality', 'L']]
+    let navigate = useNavigate();
+
     const handleChange = (event, index) => {
         let obj = { ...inputObj }
         obj[formFields[index][0]] = event.target.value
@@ -12,6 +14,19 @@ export default function CustomForm({ formFields }) {
 
     const handleSubmit = (event) => {
         console.log(inputObj)
+        if(inputObj) {
+            createRow(inputObj).then(
+                res => {
+                    navigate('/'+SubmitRoute)
+                }
+            ).catch(
+                err => {
+                    if(err.response) {
+                        console.log(err.response)
+                    }
+                }
+            )
+        }
     }
 
 
@@ -54,7 +69,7 @@ export default function CustomForm({ formFields }) {
     return (
         <form>
             {renderInputs}
-            <button onClick={handleSubmit} type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+            <button onClick={handleSubmit} type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{SubmitText}</button>
         </form>
     )
 }
