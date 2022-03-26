@@ -14,27 +14,26 @@ function App() {
   return (
     <div className="App">
       <PageWrapper props={
-          <Routes>
-<Route path='/A' element={<><DynamicTable
-              tableFields={["Data","Protocolo","ComoCorreu"]} /><SpaceSplit
-                  /><SimpleButton handleClick={() => navigate('/B')} text='Add'
-                      /></>} />
+        <Routes>
+          <Route path='/A' element={<><DynamicTable
+            tableFields={["Data", "Protocolo", "ComoCorreu"]} /><SpaceSplit
+            /><SimpleButton handleClick={() => navigate('/B')} text='Add'
+            /></>} />
 
-<Route path='/B' element={<><SpaceSplit /><CustomForm
-              formFields={[["Data",'N'], ["Protocolo",'N'], ["ComoCorreu",'N'],
-              ["Foto",'U'], ["Conclusao",'L']]} submitRoute='A'
-              submitText='Submit' /></>} />
+          <Route path='/B' element={<><SpaceSplit /><CustomForm
+            formFields={[["Data", 'N'], ["Protocolo", 'N'], ["ComoCorreu", 'N'],
+            ["Foto", 'U'], ["Conclusao", 'L']]} submitRoute='A'
+            submitText='Submit' /></>} />
 
-<Route path='/C' element={<><DynamicTable
-              tableFields={["Data","Protocolo","ComoCorreu","Foto","Conclusao"]}
-              /></>} />
+          <Route path='/C' element={<><DynamicTable
+            tableFields={["Data", "Protocolo", "ComoCorreu", "Foto", "Conclusao"]}
+          /></>} />
 
-          </Routes>
+        </Routes>
       } />
-
     </div>
   );
 }
 
 export default App;
-    
+
