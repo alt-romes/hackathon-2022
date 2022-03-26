@@ -22,6 +22,7 @@ import DynamicTable from "./components/DynamicTable";
 import PageWrapper from "./pages/PageWrapper";
 import SimpleButton from "./components/SimpleButton";
 import CustomForm from "./components/CustomForm";
+import SpaceSplit from "./components/SpaceSplit";
 function App() {
   let navigate = useNavigate();
   return (
