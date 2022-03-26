@@ -14,7 +14,6 @@ B:
 > ComoCorreu
 ^ Foto
 >> Conclusao
-===============================
 [[ Submit ]] => A
 
 C:

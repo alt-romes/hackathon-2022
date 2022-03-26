@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-rm -rf _build
+# Clear previous build
 mkdir -p _build
-cp -r app_static/* _build/
+cp -rf app_static/* _build/
 cabal run
+
+cd _build/
+
+npm i
+
+npm run start
