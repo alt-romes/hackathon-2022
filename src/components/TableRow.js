@@ -9,7 +9,7 @@ function TableRow({ rowValues }) {
     ))
 
     return (
-        <tr className="bg-teal hover:bg-black border-y border-black">
+        <tr className="bg-teal hover:bg-white hover:text-black border-y border-black">
             {renderItems}
         </tr>
     )
