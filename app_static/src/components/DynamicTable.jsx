@@ -12,14 +12,13 @@ function DynamicTable({ tableFields }) {
     ]
 
     useEffect(() => {
-        console.log(tableData)
+        console.log(tableFields)
         if (!tableData) {
             getTable().then(
                 res => {
                     console.log(res)
                     let proccessedData = res?.data?.data?.map(x =>
-                        Object.entries(x).sort((a, b) =>
-                            b[0].localeCompare(a[0])).filter(x => x[0] != "id")
+                        Object.entries(x).filter(x => x[0] != "id")
                             .map(y => y[1]))
                     setTable(proccessedData)
                 }
