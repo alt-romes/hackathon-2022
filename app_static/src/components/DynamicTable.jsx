@@ -4,15 +4,6 @@ import TableRow from "./TableRow"
 
 function DynamicTable({ tableFields }) {
     const [tableData, setTable] = useState(undefined);
-    const [ordered, setOrdered] = useState(false);
-
-    useEffect(() => {
-        if(!ordered) {
-            tableFields.sort()
-            setOrdered(true)
-        }
-    }, [ordered])
-
 
     useEffect(() => {
         console.log(tableFields)
@@ -20,11 +11,9 @@ function DynamicTable({ tableFields }) {
             getTable().then(
                 res => {
                     console.log(res)
-                    let proccessedData = res?.data?.data?.map(x =>
-                        Object.entries(x).sort((a, b) =>
-                            b[0].localeCompare(a[0])).filter(x => x[0] != "id")
-                            .map(y => y[1]))
-                    setTable(proccessedData)
+                    let processedData = res?.data?.data.map(x => tableFields.map(y => x[y]))
+                    console.log(processedData)
+                    setTable(processedData)
                 }
             ).catch(
                 err => {
@@ -37,7 +26,7 @@ function DynamicTable({ tableFields }) {
     }, [tableData])
 
     const renderRows = tableData?.map((row, i) => (
-            <TableRow key={i + row[0]} rowValues={row} />
+            <TableRow key={i + "tablei"} rowValues={row} />
         ))
 
     const renderTh = tableFields.map((item, i) => (

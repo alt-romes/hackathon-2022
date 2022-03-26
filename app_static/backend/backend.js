@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express();
 const HTTP_PORT = 8000;
 var jsonParser = bodyParser.json()
@@ -29,7 +30,7 @@ let db = new sqlite3.Database(dbPath, (err) => {
     }
 });
 
-//app.use(cors());
+app.use(cors({origin: "http://localhost:3000"}));
 
 app.get("/", (req, res, next) => { //Ir a db pedir table inteira
     var sql = "SELECT * from " + fieldNames[0];
