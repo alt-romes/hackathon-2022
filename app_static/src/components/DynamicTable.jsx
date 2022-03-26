@@ -2,24 +2,26 @@ import { useEffect, useState } from "react"
 import { getTable } from "../axios";
 import TableRow from "./TableRow"
 
-function DynamicTable({tableFields}) {
-    const [tableData, setTable] = useState();
+function DynamicTable({ tableFields }) {
+    const [tableData, setTable] = useState(undefined);
 
     const table = [
-        ['Ricardo', '22','PT'],
-        ['Alberto', '22','PT'],
-        ['Rodrigo', '22','PT']
+        ['Ricardo', '22', 'PT'],
+        ['Alberto', '22', 'PT'],
+        ['Rodrigo', '22', 'PT']
     ]
 
     useEffect(() => {
-        if(!tableData) {
+        console.log(tableData)
+        if (!tableData) {
             getTable().then(
                 res => {
-                    setTable(res.data)
+                    console.log(res)
+                    setTable(res.data.data)
                 }
             ).catch(
                 err => {
-                    if(err.response) {
+                    if (err.response) {
                         console.log(err.response)
                     }
                 }
@@ -27,12 +29,15 @@ function DynamicTable({tableFields}) {
         }
     }, [tableData])
 
-    const renderRows = table.map((row,i) => (
-        <TableRow key={i+row[0]} rowValues={row} />
-    ))
+    const renderRows = () => (
+        tableData && tableData.map((row, i) => (
+            <TableRow key={i + row[0]} rowValues={row} />
+        ))
+    )
+   
 
     const renderTh = tableFields.map((item, i) => (
-        <th key={i+item} className={"px-6 py-3"}>
+        <th key={i + item} className={"px-6 py-3"}>
             {item}
         </th>
     ))
@@ -40,16 +45,20 @@ function DynamicTable({tableFields}) {
     return (
 
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        {renderTh}
-                    </tr> 
-                </thead>
-                <tbody>
-                    {renderRows}
-                </tbody>
-            </table>
+            {
+                tableData && (
+                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                {renderTh}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {renderRows}
+                        </tbody>
+                    </table>
+                )
+            }
         </div>
     )
 }

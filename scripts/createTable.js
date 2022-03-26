@@ -1,7 +1,9 @@
 const myArgs = process.argv.slice(2);
+var fieldNames;
 
 function stringify(arr) {
     let r = "";
+    let values = "";
     for (let i = 1; i < arr.length; i++) {
         if (i == 1) {
             r = r + "("
@@ -12,11 +14,25 @@ function stringify(arr) {
         } else {
             r = r + ");"
         }
+
     }
     return r;
 }
 
-function fieldNames(myArgs) {
+function stringifyWithValues(arr) {
+    let r = stringify(arr);
+    r += "VALUES ("
+    for (let i = 1; i < arr.length; i++) {
+        r += "?";
+        if (i != arr.length - 1) {
+            r += ",";
+        } else {
+            r += ")"
+        }
+    }
+}
+
+function fieldNamesFun(myArgs) {
     for (let i = 1; i < myArgs.length; i++) {
         myArgs[i] = myArgs[i];
         if (i == 1) {
@@ -26,21 +42,21 @@ function fieldNames(myArgs) {
     return myArgs;
 }
 
-console.log(fieldNames(myArgs));
-
 function createTable(myArgs) {
+    const id = "table_id";
+    var head = myArgs.shift();
+    myArgs = [id].concat(myArgs);
+    myArgs.unshift(head);
     for (let i = 1; i < myArgs.length; i++) {
-        myArgs[i] = myArgs[i] + " TEXT"
         if (i == 1) {
-            myArgs[i] = myArgs[i] + " PRIMARY KEY";
+            myArgs[i] = myArgs[i] + " TEXT PRIMARY KEY AUTOINCREMENT";
+        } else {
+            myArgs[i] = myArgs[i] + " TEXT"
         }
     }
-    if (myArgs.length > 0) {
-        return "CREATE TABLE " + myArgs[0] + stringify(myArgs) + "";
-    }
+    fieldNames = fieldNamesFun(myArgs);
+    return "CREATE TABLE " + myArgs[0] + stringify(myArgs);
 }
 
-
-let r = "\'CREATE TABLE " + myArgs[0] + stringify(myArgs) + "\'"
-
 console.log(createTable(myArgs));
+console.log(fieldNames);

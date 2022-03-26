@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { createRow } from "../axios"
 
@@ -12,12 +12,17 @@ function CustomForm({ formFields, submitRoute, submitText }) {
         setInputObj(obj)
     }
 
+    useEffect(() => {
+        console.log(inputObj)
+    }, [inputObj])
+
     const handleSubmit = (event) => {
         console.log(inputObj)
         if (inputObj) {
             createRow(inputObj).then(
                 res => {
                     navigate('/' + submitRoute)
+                    console.log("Success")
                 }
             ).catch(
                 err => {
@@ -64,10 +69,12 @@ function CustomForm({ formFields, submitRoute, submitText }) {
     ))
 
     return (
+        {/* <div className="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700"> */}
         <form>
             {renderInputs}
             <button onClick={handleSubmit} type="submit" className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">{submitText}</button>
         </form>
+        // </div>
     )
 }
 
