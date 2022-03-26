@@ -2,11 +2,11 @@ import { useEffect, useState } from "react"
 
 export default function CustomForm({ formFields }) {
     const [inputObj, setInputObj] = useState({})
-
-    const fieldNamez = [['Name', 'N'], ['Age', 'U'], ['Nationality', 'L']]
+    //for testing
+    //const fieldNamez = [['Name', 'N'], ['Age', 'U'], ['Nationality', 'L']]
     const handleChange = (event, index) => {
         let obj = { ...inputObj }
-        obj[fieldNamez[index][0]] = event.target.value
+        obj[formFields[index][0]] = event.target.value
         setInputObj(obj)
     }
 
@@ -15,7 +15,7 @@ export default function CustomForm({ formFields }) {
     }
 
 
-    const renderInputs = fieldNamez.map((fieldN, i) => (
+    const renderInputs = formFields.map((fieldN, i) => (
         fieldN[1] === "N" ? (
             <div key={fieldN[0] + i}>
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">

@@ -15,7 +15,7 @@ function DynamicTable({tableFields}) {
     return (
         <table className="w-full mx-auto text-sm text-left text-white">
             <thead className="text-white uppercase bg-white">
-                <TableRow rowValues={fieldNames}/>
+                <TableRow rowValues={tableFields}/>
             </thead>
             <tbody>
                 {renderRows}
