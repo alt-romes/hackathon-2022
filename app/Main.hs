@@ -6,7 +6,7 @@ import Parser
 
 main :: IO ()
 main = do
-    x <- parseFromFile "test2.app"
+    x <- parseFromFile "demo3.app"
     case x of
       Left err -> print err
       Right ast -> do
