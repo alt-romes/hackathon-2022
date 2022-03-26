@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <PageWrapper props={
           <Routes>
-            <Route path="/A" element={<> <TablePage /> <RedirectButton page="B"/> </>} />
+            <Route path="/A" element={<> <TablePage fieldNames={["Name","Age","Nationality"]} /> <RedirectButton page="B"/> </>} />
             <Route path="/B" element={<> <CustomForm fieldNames={["Name","Age","Nationality"]}/> </>}/>
           </Routes>
       } />

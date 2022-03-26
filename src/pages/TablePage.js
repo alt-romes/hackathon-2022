@@ -1,7 +1,7 @@
 import DynamicTable from "../components/DynamicTable"
 import RedirectButton from "../components/RedirectButton"
 
-function TablePage() {
+function TablePage({fieldNames}) {
 
     const table = [
         ['Ricardo', '22','PT'],
@@ -11,7 +11,7 @@ function TablePage() {
 
     return (
         <div>
-            <DynamicTable table={table}/>
+            <DynamicTable table={table} fieldNames={fieldNames}/>
         </div>
     )
 }

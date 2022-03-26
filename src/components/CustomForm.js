@@ -10,20 +10,16 @@ export default function CustomForm({ fieldNames }) {
     }
 
     const handleSubmit = (event) => {
-
-    }
-
-    useEffect(() => {
         console.log(inputObj)
-    }, [inputObj])
-
+    }
+    
     const renderInputs = fieldNames.map((fieldN, i) => (
-        <div>
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+        <div key={fieldN+i}>
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 {fieldN}
             </label>
             <input
-                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 id={i + fieldN}
                 type="text"
                 placeholder={fieldN}
@@ -32,9 +28,9 @@ export default function CustomForm({ fieldNames }) {
     ))
 
     return (
-        <form className="w-full max-w-lg">
+        <div className="w-full max-w-lg">
             {renderInputs}
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-        </form>
+            <button onClick={handleSubmit} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+        </div>
     )
 }
