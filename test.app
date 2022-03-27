@@ -1,27 +1,27 @@
+:Pagina Principal:
 
-A:
-
-Data | Protocolo | Outcome
+Data | Protocolo | Como correu
 ==========================
 --------------------------
 
-[ Adicionar ] => B
+[ Adicionar Novo ] => B
+[ Ver Mais ] => C
 
-B:
+:B:
 
 > Data
 ^ BI
 > Protocolo
-> ComoCorreu
+> Como correu
 ^ Foto
->> Conclusao
+>> Conclusão
 [[ Gravar ]] => A
 
 
-C:
+:C:
 
-Data | Protocolo | Outcome | Foto | Conclusao
-=============================================
----------------------------------------------
+Data | Protocolo | Como correu | Foto | Conclusão
+=================================================
+-------------------------------------------------
 
 

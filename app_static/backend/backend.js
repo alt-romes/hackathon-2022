@@ -9,7 +9,6 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const { red } = require('colorette');
 const dbPath = path.resolve(__dirname, 'database.db');
-//
 const myArgs = process.argv.slice(2);
 var fieldNames;
 
@@ -159,6 +158,7 @@ function createTable(myArgs) {
         }
     }
     fieldNames = fieldNamesFun(myArgs);
+    console.log(fieldNames)
     return "CREATE TABLE IF NOT EXISTS " + myArgs[0] + stringify(myArgs);
 }
 

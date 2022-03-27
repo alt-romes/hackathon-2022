@@ -1,16 +1,20 @@
 module Main where
 
+import System.Exit
+
 import Gen
 import Render
 import Parser
 
 main :: IO ()
 main = do
-    x <- parseFromFile "demo3.app"
+    x <- parseFromFile "test2.app"
     case x of
-      Left err -> print err
+      Left err -> do
+          print err
+          exitFailure
       Right ast -> do
-          putStrLn (unwords $ map (\(FieldName n) -> n) $ collectFieldNames ast)
-          writeFile "_build/src/App.js" (render (App ast))
+          putStrLn (unwords $ map ((\w -> "\"" <> w <> "\"") . \(FieldName n) -> n) $ collectFieldNames ast)
+          writeFile "_build/src/App.jsx" (render (App ast))
     return ()
 
