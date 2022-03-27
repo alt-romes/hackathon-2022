@@ -7,9 +7,9 @@ var jsonParser = bodyParser.json()
 //DB type shit
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const { red } = require('colorette');
 const dbPath = path.resolve(__dirname, 'database.db');
-const myArgs = process.argv.slice(2);
+var myArgs = process.argv.slice(2);
+myArgs = myArgs.join().split(",");
 var fieldNames;
 
 let db = new sqlite3.Database(dbPath, (err) => {
@@ -17,7 +17,9 @@ let db = new sqlite3.Database(dbPath, (err) => {
         return console.error(err.message);
     } else {
         console.log('Connected to the in-memory SQLite database.');
+        console.log(myArgs.length);
         if (myArgs.length > 0) {
+            console.log("CREATE TABLE")
             db.run(createTable(myArgs));
             console.log("Tabela de pé");
             (err) => {
@@ -29,7 +31,7 @@ let db = new sqlite3.Database(dbPath, (err) => {
     }
 });
 
-app.use(cors({origin: "http://localhost:3000"}));
+app.use(cors({ origin: "http://localhost:3000" }));
 
 app.get("/", (req, res, next) => { //Ir a db pedir table inteira
     var sql = "SELECT * from " + fieldNames[0];
@@ -93,7 +95,7 @@ function stringifyForInsert() {
         if (i == 0) {
             r = r + "("
         }
-        r = r + myArgs[i];
+        r = r + "\"" + myArgs[i] + "\"";
         if (i != myArgs.length - 1) {
             r = r + ", ";
         } else {
@@ -154,7 +156,7 @@ function createTable(myArgs) {
         if (i == 1) {
             myArgs[i] = myArgs[i] + " INTEGER PRIMARY KEY AUTOINCREMENT";
         } else {
-            myArgs[i] = myArgs[i] + " TEXT"
+            myArgs[i] = "\"" + myArgs[i] + "\"" + " TEXT";
         }
     }
     fieldNames = fieldNamesFun(myArgs);
