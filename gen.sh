@@ -20,6 +20,6 @@ cd _build/
 
 npm i
 
-node backend/backend.js main $FIELDS &
+node backend/backend.js 'Main' $FIELDS &
 
 npm run start
