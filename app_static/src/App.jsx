@@ -12,15 +12,16 @@ import SpaceSplit from "./components/SpaceSplit";
 import Breadcrumbs from "./components/Breadcrumbs";
 function App() {
   let navigate = useNavigate();
+
   return (
     <div className="App">
       <PageWrapper props={
         <>
-          <Breadcrumbs />
+          <Breadcrumbs mainPage="A" />
           <Routes>
-            <Route path='/A' element={<><DynamicTable tableFields={["Data", "Protocolo", "Outcome"]} /><SimpleButton handleClick={() => navigate('/B')} text='Adicionar' /></>} />
-            <Route path='/B' element={<><CustomForm formFields={[["Data", 'N'], ["BI", 'U'], ["Protocolo", 'N'], ["ComoCorreu", 'N'], ["Foto", 'U'], ["Conclusao", 'L']]} submitRoute='A' submitText='Gravar' /></>} />
-            <Route path='/C' element={<><DynamicTable tableFields={["Data", "Protocolo", "Outcome", "Foto", "Conclusao"]} /></>} />
+            <Route path='/A' element={<><DynamicTable tableFields={["Name", "Age", "Nationality"]} /><SimpleButton handleClick={() => navigate('/B')} text='Adicionar' /></>} />
+            <Route path='/B' element={<><CustomForm formFields={[["Name", 'N'], ["Age", 'N'], ["Nationality", 'L']]} submitRoute='A' submitText='Gravar' /></>} />
+            <Route path='/C' element={<><DynamicTable tableFields={["Name", "Age", "Nationality"]} /></>} />
           </Routes>
         </>
       } />
