@@ -6,10 +6,12 @@ import qualified Data.Text as T
 
 import Gen
 
+page_name (Page (PageName n) _) = n
+
 class Render a where
     render :: a -> String
 
-data App = App [Page]
+newtype App = App [Page]
 
 instance Render App where
     render (App pages) = [r|
@@ -30,9 +32,10 @@ function App() {
     <div className="App">
       <PageWrapper props={
         <>
-          <Breadcrumbs />
-          <Routes>
-    |] <> unlines (map (show . page2Comp) pages) <> [r|
+    |] <> "<Breadcrumbs mainPage='"
+       <> page_name (head pages)
+       <> "' /> <Routes>"
+       <> unlines (map (show . page2Comp) pages) <> [r|
           </Routes>
         </>
       } />

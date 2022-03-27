@@ -1,11 +1,11 @@
 :Main:
-Oponente1 | Oponente2 | Jogo
+Oponente A | Oponente B | Jogo
 ============================
 ----------------------------
-[ NovoJogo ] => Form
+[ Novo Jogo ] => Form
 
 :Form:
-> Oponente1
-> Oponente2
+> Oponente A
+> Oponente B
 > Jogo
-[[ Adicionar ]] => Main
+[[ Adicionar Jogo ]] => Main
