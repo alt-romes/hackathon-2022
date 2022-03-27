@@ -192,6 +192,7 @@ import {
   useNavigate
 } from "react-router-dom";
 import PageWrapper from "./pages/PageWrapper";
+import Header from "./components/Header";
 import DynamicTable from "./components/DynamicTable";
 import SimpleButton from "./components/SimpleButton";
 import CustomForm from "./components/CustomForm";
@@ -201,16 +202,18 @@ function App() {
   let navigate = useNavigate();
   return (
     <div className="App">
-      <PageWrapper props={
-        <>
-    |] <> "<Redirect mainPage='"
-       <> page_name (head pages)
-       <> "' /> <Routes>"
-       <> unlines (map (show . page2Comp) pages) <> [r|
-          </Routes>
-        </>
-      } />
-
+      <main>
+        <Header mainPage='|] <> page_name (head pages) <> [r|'/>
+        <PageWrapper props={
+          <>
+      |] <> "<Redirect mainPage='"
+         <> page_name (head pages)
+         <> "' /> <Routes>"
+         <> unlines (map (show . page2Comp) pages) <> [r|
+            </Routes>
+          </>
+        } />
+      </main>
     </div>
   );
 }
