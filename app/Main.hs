@@ -14,7 +14,7 @@ main = do
           print err
           exitFailure
       Right ast -> do
-          putStrLn (unwords $ map ((\w -> "\"" <> w <> "\"") . \(FieldName n) -> n) $ collectFieldNames ast)
+          writeFile "_build/backend/backend.js" (render (DB $ collectFieldNames ast))
           writeFile "_build/src/App.jsx" (render (App ast))
     return ()
 
