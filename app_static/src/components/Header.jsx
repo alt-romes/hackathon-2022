@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router"
 
-
 export default function Header({ mainPage }) {
     const [page, setPage] = useState("")
     const [previous, setPrevious] = useState("")
@@ -10,7 +9,7 @@ export default function Header({ mainPage }) {
     let location = useLocation()
 
     const canGoBack = () => {
-        if(page === mainPage && previous != "") {
+        if(page === mainPage && (previous != "" || !previous)) {
             return false;
         }
         return true;
@@ -27,7 +26,7 @@ export default function Header({ mainPage }) {
     }, [location])
 
     return (
-        <div className="flex items-center bg-gray-50 p-6">
+        <div className="flex items-center bg-gray p-6">
             <div className="w3-container w3-xlarge">
                 {
                     canGoBack() != "" &&
