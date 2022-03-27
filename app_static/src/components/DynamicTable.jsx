@@ -6,7 +6,6 @@ function DynamicTable({ tableFields }) {
     const [tableData, setTable] = useState(undefined);
 
     useEffect(() => {
-        console.log(tableFields)
         if (!tableData) {
             getTable().then(
                 res => {

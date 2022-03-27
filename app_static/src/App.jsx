@@ -9,22 +9,26 @@ import PageWrapper from "./pages/PageWrapper";
 import SimpleButton from "./components/SimpleButton";
 import CustomForm from "./components/CustomForm";
 import SpaceSplit from "./components/SpaceSplit";
-import Breadcrumbs from "./components/Breadcrumbs";
+import Redirect from "./components/Redirect";
+import Header from "./components/Header";
 function App() {
   let navigate = useNavigate();
 
   return (
     <div className="App">
-      <PageWrapper props={
-        <>
-          <Breadcrumbs mainPage="A" />
-          <Routes>
-            <Route path='/A' element={<><DynamicTable tableFields={["Name", "Age", "Nationality"]} /><SimpleButton handleClick={() => navigate('/B')} text='Adicionar' /></>} />
-            <Route path='/B' element={<><CustomForm formFields={[["Name", 'N'], ["Age", 'N'], ["Nationality", 'L']]} submitRoute='A' submitText='Gravar' /></>} />
-            <Route path='/C' element={<><DynamicTable tableFields={["Name", "Age", "Nationality"]} /></>} />
-          </Routes>
-        </>
-      } />
+      <main>
+        <Header pages={["People", "People Form", "Other"]} />
+        <PageWrapper props={
+          <>
+            <Redirect mainPage="People" />
+            <Routes>
+              <Route path='/People' element={<><DynamicTable tableFields={["Name", "Age", "Nationality"]} /><SimpleButton handleClick={() => navigate('/People Form')} text='Adicionar' /></>} />
+              <Route path='/People Form' element={<><CustomForm formFields={[["Name", 'N'], ["Age", 'N'], ["Nationality", 'L']]} submitRoute='People' submitText='Gravar' /></>} />
+              <Route path='/Other' element={<><DynamicTable tableFields={["Name", "Age", "Nationality"]} /></>} />
+            </Routes>
+          </>
+        } />
+      </main>
 
     </div>
   );
