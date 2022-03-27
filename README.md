@@ -44,7 +44,7 @@ Para criar a página principal escrevemos:
 :Lettuce_Irradiation:
 Data | Protocolo | Outcome
 ==========================
---------------------------------------------
+---------------------------
 [ Adicionar ] => B
 
 ```
@@ -55,8 +55,13 @@ A definição do botão é entre dois parênteses retos: `[ Texto_do_Botão ]`
 
 A navegação para outra página é descrito por: `=> `
 
-A tabela é definida por: ` Campo1 | Campo2 | Campo3`
+A tabela é definida por:
 
+``` 
+Campo A | Campo B | Campo C
+==========================
+--------------------------- 
+```
 
 Na realização da tabela de dados: 
 
@@ -70,16 +75,6 @@ B:
 >> Conclusao
 [[ Gravar ]] => A
 ```
-
-E por fim, para a página de adição de dados:
-
-```
-C:
-Data | Protocolo | Outcome | Foto | Conclusao
-==================================
-----------------------------------------------------------
-```
-
 O input de texto é dado por: `>`
 
 O input de texto longo é através de: `>>`
@@ -88,9 +83,19 @@ O upload do ficheiro é feito pelo uso de: `^`
 
 A submissão de dados é atribuída com: `[[]]`
 
+
+E por fim, para a página de adição de dados:
+
+```
+C:
+Data | Protocolo | Outcome | Foto | Conclusao
+==================================
+----------------------------------
+```
+
 A separação de dados é possível através do uso de: `==== `
 
-Os fields separados por `|` e uma linha com `==` e posteriormente com `--` define uma tabela que lê dados.
+
 
 
 
