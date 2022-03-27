@@ -26,14 +26,14 @@ export default function Header({ mainPage }) {
     }, [location])
 
     return (
-        <div className="flex items-center bg-gray p-6">
+        <div className="flex items-center dark:bg-gray-700 py-6 px-12">
             <div className="w3-container w3-xlarge">
                 {
-                    canGoBack() != "" &&
-                    <i onClick={() => navigate(-1)} class="fa fa-arrow-left"></i>
+                    canGoBack() &&
+                    <i onClick={() => navigate(-1)} className="fa fa-arrow-left pr-5 text-white"></i>
                 }
             </div>
-            <div>
+            <div className="text-xl text-white">
                 {
                     page && <h1>{page}</h1>
                 }
