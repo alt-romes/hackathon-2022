@@ -13,10 +13,6 @@ export default function Breadcrumbs({mainPage}) {
         }
     }, [location])
 
-    useEffect(() => {
-        console.log(mainPage)
-    }, [mainPage])
-
     return (
         <></>
     )

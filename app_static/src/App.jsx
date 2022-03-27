@@ -17,13 +17,13 @@ function App() {
   return (
     <div className="App">
       <main>
-        <Header pages={["People", "People Form", "Other"]} />
+      <Header mainPage="People"/>
         <PageWrapper props={
           <>
             <Redirect mainPage="People" />
             <Routes>
-              <Route path='/People' element={<><DynamicTable tableFields={["Name", "Age", "Nationality"]} /><SimpleButton handleClick={() => navigate('/People Form')} text='Adicionar' /></>} />
-              <Route path='/People Form' element={<><CustomForm formFields={[["Name", 'N'], ["Age", 'N'], ["Nationality", 'L']]} submitRoute='People' submitText='Gravar' /></>} />
+              <Route path='/People' element={<><DynamicTable tableFields={["Name", "Age", "Nationality"]} /><SimpleButton handleClick={() => navigate('/PeopleForm')} text='Adicionar' /></>} />
+              <Route path='/PeopleForm' element={<><CustomForm formFields={[["Name", 'N'], ["Age", 'N'], ["Nationality", 'L']]} submitRoute='People' submitText='Gravar' /></>} />
               <Route path='/Other' element={<><DynamicTable tableFields={["Name", "Age", "Nationality"]} /></>} />
             </Routes>
           </>
