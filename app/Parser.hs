@@ -4,24 +4,27 @@ import Control.Monad
 import Gen
 import Text.Parsec hiding (Line)
 import qualified Text.Parsec.Expr as Ex 
+import Data.List
 
 import Lexer
 
+manyIdentifiers :: Parser String
+manyIdentifiers = unwords <$> many1 identifier
+
 pageName :: Parser PageName
-pageName = PageName <$> identifier
+pageName = PageName . intercalate "_" <$> many1 identifier
 
 fieldName :: Parser FieldName
-fieldName = FieldName <$> identifier
+fieldName = FieldName <$> manyIdentifiers
 
 table :: Parser Line
 table = do
-    n1 <- FieldName <$> identifier
+    n1 <- fieldName
     ns <- many1 $ do
         reservedOp "|"
-        FieldName <$> identifier
+        fieldName
     many1 (symbol "=")
-    l <- line
-    return $ Table (n1:ns) l
+    Table (n1:ns) <$> line
 
 dummyRow :: Parser Line
 dummyRow = do
@@ -34,7 +37,7 @@ split = do
     return SpaceSplit
 
 button :: Parser Line
-button = Button <$> try (brackets identifier)
+button = Button <$> try (brackets manyIdentifiers)
 
 formInput :: Parser Line
 formInput = do
@@ -52,7 +55,7 @@ formUpload = do
     FormUpload <$> fieldName
 
 formSubmit :: Parser Line
-formSubmit = FormSubmit <$> try (doublebrackets identifier)
+formSubmit = FormSubmit <$> try (doublebrackets manyIdentifiers)
     where
     doublebrackets = between (symbol "[[") (symbol "]]")
 
@@ -66,6 +69,7 @@ line = do
 
 page :: Parser Page
 page = do
+    reservedOp ":"
     n <- pageName
     reservedOp ":"
     lines <- many1 (try line)
