@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { getTable } from "../axios";
+import SearchBar from "./SearchBar";
 import TableRow from "./TableRow"
 
 function DynamicTable({ tableFields }) {
@@ -37,6 +38,8 @@ function DynamicTable({ tableFields }) {
     return (
 
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-6">
+            <>
+            <SearchBar/>
             {
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -53,6 +56,8 @@ function DynamicTable({ tableFields }) {
                     }
                 </table>
             }
+            </>
+            
         </div>
     )
 }
