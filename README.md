@@ -1,34 +1,6 @@
 # APP Hacker
 
-O APP Hacker é um projeto que tem o objetivo de facilitar o desenvolvimento de aplicações simples. 
-Permitindo a acessibilidade para diferentes
-
-O cenário que inspirou a criação deste projeto foi a dificuldade da gestão de dados numa investigação no ramo de farmácia. 
-
-E se fosse possível fazer uma aplicação que permitisse definir os critérios que pretendemos organizados numa base de dados?
-
-Este necessita apenas do preenchimento dos seguintes critérios:
-
-
-```
-A:
-Data | Protocolo | Outcome
-==========================
---------------------------------------------
-[ Adicionar ] => B
-B:
-> Data
-^ BI
-> Protocolo
-> Outcome
-^ Foto
->> Conclusao
-[[ Gravar ]] => A
-C:
-Data | Protocolo | Outcome | Foto | Conclusao
-==================================
-----------------------------------------------------------
-```
+O APP Hacker é um projeto que tem o objetivo de promover e facilitar o desenvolvimento de aplicações simples.
 
 Exemplo
 =======
@@ -45,9 +17,8 @@ Para criar a página principal escrevemos:
 :Lettuce_Irradiation:
 Data | Protocolo | Outcome
 ==========================
----------------------------
+--------------------------
 [ Adicionar ] => B
-
 ```
 
 O título da página escreve-se entre dois pontos: `:Titulo_da_pagina:`
@@ -69,7 +40,7 @@ A separação de dados é possível através do uso de: `==== `
 Para criar o formulário de inserção da tabela: 
 
 ```
-B:
+:Form:
 > Data
 ^ BI
 > Protocolo
@@ -90,10 +61,34 @@ A submissão de dados é atribuída com: `[[]]`
 E por fim, para a página de adição de dados:
 
 ```
-C:
+:Mais_Dados:
 Data | Protocolo | Outcome | Foto | Conclusao
-==================================
-----------------------------------
+=============================================
+---------------------------------------------
+```
+
+Design da app completo:
+```
+:Lettuce_Irradiation:
+Data | Protocolo | Outcome
+==========================
+--------------------------
+[ Adicionar ] => Form
+[ Mais Dados ] => Mais_Dados
+
+:Form:
+> Data
+^ BI
+> Protocolo
+> Outcome
+^ Foto
+>> Conclusao
+[[ Gravar ]] => :Lettuce_Irradiation:
+
+:Mais_Dados:
+Data | Protocolo | Outcome | Foto | Conclusao
+=============================================
+---------------------------------------------
 ```
 
 ## Exemplo de Aplicação gerada 
