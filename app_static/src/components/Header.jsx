@@ -30,7 +30,7 @@ export default function Header({ mainPage }) {
             <div className="w3-container w3-xlarge">
                 {
                     canGoBack() &&
-                    <i onClick={() => navigate(-1)} className="fa fa-arrow-left pr-5 text-black dark:text-white"></i>
+                    <i onClick={() => navigate(-1)} className="fa fa-arrow-left pr-5 text-white"></i>
                 }
             </div>
             <div className="text-xl text-white">
