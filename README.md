@@ -1,8 +1,9 @@
 # APP Hacker
 
-O APP Hacker é um projeto que tem o objetivo de facilitar o desenvolvimento de aplicações simples.
+O APP Hacker é um projeto que tem o objetivo de facilitar o desenvolvimento de aplicações simples. 
+Permitindo a acessibilidade para diferentes
 
-O cenário que inspirou a criação deste projeto foi a dificuldade da gestão de dados numa investigação no ramo de farmácia.
+O cenário que inspirou a criação deste projeto foi a dificuldade da gestão de dados numa investigação no ramo de farmácia. 
 
 E se fosse possível fazer uma aplicação que permitisse definir os critérios que pretendemos organizados numa base de dados?
 
@@ -63,6 +64,8 @@ Campo A | Campo B | Campo C
 --------------------------- 
 ```
 
+A separação de dados é possível através do uso de: `==== `
+
 Na realização da tabela de dados: 
 
 ```
@@ -93,7 +96,7 @@ Data | Protocolo | Outcome | Foto | Conclusao
 ----------------------------------
 ```
 
-A separação de dados é possível através do uso de: `==== `
+
 
 
 
