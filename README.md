@@ -53,11 +53,10 @@ O título da página escreve-se entre dois pontos: `:Titulo_da_pagina:`
 
 A definição do botão é entre dois parênteses retos: `[ Texto_do_Botão ]`
 
-A alteração de página é descrito por: `=> `
+A navegação para outra página é descrito por: `=> `
 
-A header é definida por: `A | B | C`
+A tabela é definida por: ` Campo1 | Campo2 | Campo3`
 
-As rows são feitas através de: `---------` ou `... | ... | ...`
 
 Na realização da tabela de dados: 
 
