@@ -1,6 +1,6 @@
 # Demo
 
-https://www.youtube.com/watch?v=HoUoaOkqhfA&feature=youtu.be
+https://www.youtube.com/watch?v=HoUoaOkqhfA
 
 # APP Hacker
 
