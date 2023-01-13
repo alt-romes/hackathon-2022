@@ -8,7 +8,7 @@ import Parser
 
 main :: IO ()
 main = do
-    x <- parseFromFile "test2.app"
+    x <- parseFromFile "myApp.app"
     case x of
       Left err -> do
           print err
